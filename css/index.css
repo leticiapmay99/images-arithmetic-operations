@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  background-color: #fff;
+  box-sizing: border-box;
+  color: #24292e;
+  line-height: 1.4;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  margin-top: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #24292e;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+button:focus,
+input:focus,
+a:focus {
+  outline: none !important;
+  border-color: rgba(0,0,0,.125) !important;
+  box-shadow: unset !important;
+}
+
+.status {
+  position: fixed;
+  z-index: 15;
+  margin: 20px 0px 0 25px;
+  background: rgba(249, 57, 57, 0.8);
+  color: #fff;
+  font-weight: 600;
+  padding: 5px 15px;
+}
+
+.status.ready {
+  background: rgb(19, 211, 19, 0.8);
+}
+
+.status.hidden {
+  display: none;
+}
+
+.flex-wrapp {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.custom-card {
+  max-width: 288px;
+  width: 100%;
+  flex: 1 1 220px;
+}
+
+.l-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.img-block {
+  max-width: 286px;
+  width: 100%;
+  height: 286px;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.canvas-card {
+  max-width: 325px;
+  width: 100%;
+  height: 357px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.canvas-card .canvas-title {
+  margin-bottom: 10px;
+}
+
+.canvas-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-card-body {
+  display: flex;
+}
+
+.flex-card-body .list-block {
+  min-width: 120px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-card-body .list-block:first-of-type {
+  border-right: 1px solid rgba(0,0,0,.125);
+  margin-right: 15px;
+  padding-right: 15px;
+}
+
+.list-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.list-buttons li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-custom {
+  width: 100%;
+  max-width: 150px;
+}
+
+.pdd-bttm-13 {
+  padding-bottom: 13px;
+}
+
+.disable {
+  pointer-events: none;
+  cursor: default;
+  background-color: #e9ecef;
+  opacity: 0.8;
+}
+
+footer {
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,.125);
+  padding: 35px 0 50px;
+}
+
+@media (max-width: 480px) {
+  .flex-wrapp {
+    justify-content: center;
+  }
+
+  .custom-card {
+    margin-right: 0 !important;
+  }
+}

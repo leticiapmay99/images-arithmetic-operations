@@ -4,30 +4,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Images Arithmetic Operations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <p id="status">OpenCV.js is loading...</p>
-    <div class="inputoutput">
-        <img id="imgInput1" alt="Imagem 1" />
-        <div class="caption">
-            <span>Imagem 1: </span> 
-            <input type="file" id="fileInput1" name="file" />
+    <p id="status" class="status">OpenCV.js is loading...</p>
+    <main>
+        <div class="container shadow-sm py-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="flex-wrapp">
+                        <div class="card mb-3 custom-card me-3">
+                            <div class="card-header text-center">
+                                IMAGEM 1
+                            </div>
+                            <div class="img-block">
+                                <img id="imgInputOne" src="./assets/images/no-image.jpg" alt="">
+                            </div>
+                            <div class="card-body">
+                                <label class="btn btn-primary d-block" for="fileInputOne">Carregar Imagem</label>
+                                <div class="input-group visually-hidden">
+                                    <input id="fileInputOne" type="file" class="form-control disable" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3 custom-card">
+                            <div class="card-header text-center">
+                                IMAGEM 2
+                            </div>
+                            <div class="img-block">
+                                <img id="imgInputTwo" src="./assets/images/no-image.jpg" alt="">
+                            </div>
+                            <div class="card-body">
+                                <label class="btn btn-primary d-block" for="fileInputTwo">Carregar Imagem</label>
+                                <div class="input-group visually-hidden">
+                                    <input id="fileInputTwo" type="file" class="form-control disable" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card mb-3 pdd-bttm-13">
+                        <div class="card-body flex-card-body">
+                            <div class="list-block">
+                                <p class="l-title">Operações Aritméticas</p>
+                                <ul class="list-buttons">
+                                    <li class="mb-3">
+                                        <button id="btnSum" class="btn btn-primary d-block btn-custom" disabled>Adição</button>
+                                    </li>
+                                    <li class="mb-3">
+                                        <button id="btnSubtraction" class="btn btn-primary d-block btn-custom" disabled>Subtração</button>
+                                    </li>
+                                    <li class="mb-3">
+                                        <button id="btnMultiplication" class="btn btn-primary d-block btn-custom" disabled>Multiplicação</button>
+                                    </li>
+                                    <li class="mb-3">
+                                        <button id="btnDivision" class="btn btn-primary d-block btn-custom" disabled>Divisão</button>
+                                    </li>
+                                    <li class="mb-3">
+                                        <button id="btnAverage" class="btn btn-primary d-block btn-custom" disabled>Média</button>
+                                    </li>
+                                    <li>
+                                        <button id="btnBlending" class="btn btn-primary d-block btn-custom" disabled>Blending</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list-block">
+                                <p class="l-title">Operações Lógicas</p>
+                                <ul class="list-buttons">
+                                    <li class="mb-3">
+                                        <button id="btnAndPort" class="btn btn-primary d-block btn-custom" disabled>AND</button>
+                                    </li>
+                                    <li class="mb-3">
+                                        <button id="btnOrPort" class="btn btn-primary d-block btn-custom" disabled>OR</button>
+                                    </li>
+                                    <li class="mb-3">
+                                        <button id="btnXorPort" class="btn btn-primary d-block btn-custom" disabled>XOR</button>
+                                    </li>
+                                    <li class="mb-3">
+                                        <button id="btnNotPort" class="btn btn-primary d-block btn-custom" disabled>NOT</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card canvas-card">
+                        <p class="canvas-title">IMAGEM PROCESSADA</p>
+                        <div class="canvas-block">
+                            <canvas id="canvasOutput" width="263" height="285"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="inputoutput">
-        <img id="imgInput2" alt="Imagem 2" />
-        <div class="caption">
-            <span>Imagem 2: </span>
-            <input type="file" id="fileInput2" name="file" />
-        </div>
-    </div>
-    <div class="inputoutput">
-        <canvas id="canvasOutput"></canvas>
-        <div class="caption">canvasOutput</div>
-    </div>
+    </main>
     
-    <script async src="opencv_3.4.14.js" defer onload="onOpenCvReady();"></script>
-    <script src="index.js" defer></script>
+    <footer>
+        <div class="container text-center">
+            <span>Feito com 💜</span>
+            <a href="https://github.com/leticiapmay99" target="_blank" title="GitHub/leticiapmay99">Leticia P. May</a>
+        </div>
+    </footer>
+
+    <script async src="./js/lib/opencv_3.4.14.js"></script>
+    <script defer src="./js/index.js"></script>
 </body>
 </html>
