@@ -1,128 +1,76 @@
-// Input Elements
+
 const imgInputOne = document.getElementById('imgInputOne');
 const fileInputOne = document.getElementById('fileInputOne');
 
 const imgInputTwo = document.getElementById('imgInputTwo');
 const fileInputTwo = document.getElementById('fileInputTwo');
-
-// const canvasOutput = document.getElementById('canvasOutput');
 const imageOutput = document.getElementById('imageOutput');
 
-const btnSum = document.getElementById('btnSum');
-const btnSubtraction = document.getElementById('btnSubtraction');
-const btnMultiplication = document.getElementById('btnMultiplication');
-const btnDivision = document.getElementById('btnDivision');
-const btnAverage = document.getElementById('btnAverage');
-const btnBlending = document.getElementById('btnBlending');
-const btnAndPort = document.getElementById('btnAndPort');
-const btnOrPort = document.getElementById('btnOrPort');
-const btnXorPort = document.getElementById('btnXorPort');
-const btnNotPort = document.getElementById('btnNotPort');
+var pixelData
+var pixelData2
 
-// image-js
-// async function process() {
-//   let image = await IJS.Image.load(imgInputOne.src);
-//   console.log(IJS.divide())
 
-//   // imageOutput.src = grey.toDataURL();
-// }
+fileInputOne.addEventListener('change', handleFiles);
+fileInputTwo.addEventListener('change', handleFiles2);
 
-async function sumImages() {
+function handleFiles(e) {
+	console.log(imgInputOne)
+    let ctx = imgInputOne.getContext('2d');
+    var img = new Image;
+    img.src = URL.createObjectURL(e.target.files[0]);
+    img.onload = function() {
+		ctx.drawImage(img, 20,20);
+		pixelData = ctx.getImageData(0,0, 200, 200)
+		console.log(pixelData)
+    }
+	ctx.clearRect(0, 0, 265, 285);
+}
 
-    const firstImage = await jimp.read(imgInputOne.src);
-    const secondImage = await jimp.read(imgInputTwo.src);
+function handleFiles2(e) {
+	console.log(imgInputTwo)
+    let ctx = imgInputTwo.getContext('2d');
+    var img = new Image;
+    img.src = URL.createObjectURL(e.target.files[0]);
+    img.onload = function() {
+		ctx.drawImage(img, 20,20);
+		pixelData2 = ctx.getImageData(0,0, 200, 200)
+		console.log(pixelData2)
+    }
+	ctx.clearRect(0, 0, 265, 285);
+}
 
-    const result = firstImage.composite(secondImage, 0, 0, {
-        mode: jimp.BLEND_ADD
-    });
+function adicao(){
+	let ctx = imageOutput.getContext('2d');
+    pixelData3 = pixelData
+	for(let i = 0; i<pixelData3.data.length; i+=4){
 
-    result.getBase64(jimp.AUTO, function (err, data) {
-        imageOutput.src = data
-    })
-
+		pixelData3.data[i] += pixelData2.data[i]
+		pixelData3.data[i+1] += pixelData2.data[i]
+		pixelData3.data[i+2] += pixelData2.data[i]
+		pixelData3.data[i+3] += pixelData2.data[i]
+	}	
+	ctx.putImageData(pixelData, 0, 0)
 }
 
 
-async function subtractionImages() {
-    const firstImage = await jimp.read(imgInputOne.src);
-    const secondImage = await jimp.read(imgInputTwo.src);
 
-    const result = firstImage.composite(secondImage, 0, 0, {
-        mode: jimp.BLEND_DIFFERENCE
-    });
+function sub(){
+    console.log('teste')
+	let ctx = imageOutput.getContext('2d');
+    pixelData3 = pixelData
+	for(let i = 0; i<pixelData3.data.length; i+=4){
 
-    result.getBase64(jimp.AUTO, function (err, data) {
-        imageOutput.src = data
-    })
-
+		pixelData3.data[i] -= pixelData2.data[i]
+		pixelData3.data[i+1] -= pixelData2.data[i]
+		pixelData3.data[i+2] -= pixelData2.data[i]
+		pixelData3.data[i+3] -= pixelData2.data[i]
+	}	
+	ctx.putImageData(pixelData, 0, 0)
 }
 
-async function multiplyImages() {
-    const firstImage = await jimp.read(imgInputOne.src);
-    const secondImage = await jimp.read(imgInputTwo.src);
-
-    const result = firstImage.composite(secondImage, 0, 0, {
-        mode: jimp.BLEND_MULTIPLY
-    });
-
-    result.getBase64(jimp.AUTO, function (err, data) {
-        imageOutput.src = data
-    })
-
-}
-
-// // EventListeners
-fileInputOne.addEventListener('change', async (e) => {
-    imgInputOne.src = await URL.createObjectURL(e.target.files[0]);
-}, false);
-
-fileInputTwo.addEventListener('change', async (e) => {
-    imgInputTwo.src = await URL.createObjectURL(e.target.files[0]);
-}, false);
-
-btnSum.addEventListener('click', () => {
-    sumImages()
-});
 
 
-btnMultiplication.addEventListener('click', () => {
-    multiplyImages()
-});
 
 
-btnSubtraction.addEventListener('click', () => {
-    subtractionImages()
-});
-const appStatus = function () {
-    const status = document.getElementById('status');
-    status.classList.add('ready')
-    status.innerHTML = 'Jimp is ready!';
-
-    this.setTimeout(() => {
-        status.classList.add('hidden')
-    }, 1500);
-}
-
-window.addEventListener('load', appStatus);
 
 
-/**
- * Jimp
- * https://www.npmjs.com/package/jimp
- * https://www.youtube.com/watch?v=Wk3gkFNC0s8
- * https://www.youtube.com/watch?v=2H7pRypEeD0
- * https://imasters.com.br/front-end/processamento-de-imagens-em-javascript
- * https://www.tabnine.com/code/javascript/functions/jimp/Jimp/write
- *
- * Image JS
- * https://image-js.github.io/image-js/#imagesum
- * https://www.npmjs.com/package/image-js
- * https://github.com/image-js/image-js
- *
- * OpenCV
- * https://www.ccoderun.ca/programming/doxygen/opencv/tutorial_js_image_arithmetics.html
- * https://docs.opencv.org/3.4/dd/d4d/tutorial_js_image_arithmetics.html
- * - Blending: https://codepen.io/huningxin/pen/GEGEWM
- * - https://github.com/haoking/opencvjs
- * -
-**/

@@ -10,110 +10,83 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <main>
-        <div class="container shadow-sm py-3">
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <div class="flex-wrapp">
-                        <div class="card mb-3 custom-card me-3">
-                            <div class="card-header text-center">
-                                IMAGEM 1
-                            </div>
-                            <div class="img-block">
-                                <img id="imgInputOne" src="./assets/images/no-image.jpg" alt="">
-                            </div>
-                            <div class="card-body">
-                                <label class="btn btn-primary d-block" for="fileInputOne">Carregar Imagem</label>
-                                <div class="input-group visually-hidden">
-                                    <input id="fileInputOne" type="file" class="form-control disable" />
-                                </div>
-                            </div>
+<div>
+    <div class="container shadow-sm py-3">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="flex-wrapp">
+                    <div class="card mb-3 custom-card me-3">
+                        <div class="card-header text-center">
+                            IMAGEM 1
                         </div>
-                        <div class="card mb-3 custom-card">
-                            <div class="card-header text-center">
-                                IMAGEM 2
-                            </div>
-                            <div class="img-block">
-                                <img id="imgInputTwo" src="./assets/images/no-image.jpg" alt="">
-                            </div>
-                            <div class="card-body">
-                                <label class="btn btn-primary d-block" for="fileInputTwo">Carregar Imagem</label>
-                                <div class="input-group visually-hidden">
-                                    <input id="fileInputTwo" type="file" class="form-control disable" />
-                                </div>
+                        <div class="img-block">
+                            <canvas id="imgInputOne" width="250" height="285"></canvas>
+                        </div>
+                        <div class="card-body">
+                            <label class="btn btn-primary d-block" for="fileInputOne">Carregar Imagem</label>
+                            <div class="input-group visually-hidden">
+                                <input id="fileInputOne" type="file" class="form-control disable" />
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <div class="card mb-3 pdd-bttm-13">
-                        <div class="card-body flex-card-body">
-                            <div class="list-block">
-                                <p class="l-title">Operações Aritméticas</p>
-                                <ul class="list-buttons">
-                                    <li class="mb-3">
-                                        <button id="btnSum" class="btn btn-primary d-block btn-custom">Adição</button>
-                                    </li>
-                                    <li class="mb-3">
-                                        <button id="btnSubtraction" class="btn btn-primary d-block btn-custom">Subtração</button>
-                                    </li>
-                                    <li class="mb-3">
-                                        <button id="btnMultiplication" class="btn btn-primary d-block btn-custom">Multiplicação</button>
-                                    </li>
-                                    <li class="mb-3">
-                                        <button id="btnDivision" class="btn btn-primary d-block btn-custom">Divisão</button>
-                                    </li>
-                                    <li class="mb-3">
-                                        <button id="btnAverage" class="btn btn-primary d-block btn-custom">Média</button>
-                                    </li>
-                                    <li>
-                                        <button id="btnBlending" class="btn btn-primary d-block btn-custom">Blending</button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="list-block">
-                                <p class="l-title">Operações Lógicas</p>
-                                <ul class="list-buttons">
-                                    <li class="mb-3">
-                                        <button id="btnAndPort" class="btn btn-primary d-block btn-custom">AND</button>
-                                    </li>
-                                    <li class="mb-3">
-                                        <button id="btnOrPort" class="btn btn-primary d-block btn-custom">OR</button>
-                                    </li>
-                                    <li class="mb-3">
-                                        <button id="btnXorPort" class="btn btn-primary d-block btn-custom">XOR</button>
-                                    </li>
-                                    <li class="mb-3">
-                                        <button id="btnNotPort" class="btn btn-primary d-block btn-custom">NOT</button>
-                                    </li>
-                                </ul>
+                    <div class="card mb-3 custom-card">
+                        <div class="card-header text-center">
+                            IMAGEM 2
+                        </div>
+                        <div class="img-block">
+                            <canvas id="imgInputTwo" width="263" height="285"></canvas>
+                        </div>
+                        <div class="card-body">
+                            <label class="btn btn-primary d-block" for="fileInputTwo">Carregar Imagem</label>
+                            <div class="input-group visually-hidden">
+                                <input id="fileInputTwo" type="file" class="form-control disable" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card canvas-card">
-                        <p class="canvas-title">IMAGEM PROCESSADA</p>
-                        <div class="canvas-block">
-                            <!-- <canvas id="canvasOutput" width="263" height="285"></canvas> -->
-                            <img id="imageOutput" width="263" height="285" />
+            <div class="col-sm-12 col-md-6">
+                <div class="card mb-3 pdd-bttm-13">
+                    <div class="card-body flex-card-body">
+                        <div class="list-block">
+                            <p class="l-title">Operações Aritméticas</p>
+                            <ul class="list-buttons">   
+                                <li class="mb-3">
+                                    <button id="btnSum" class="btn btn-primary d-block btn-custom" onclick="adicao()">Adição</button>
+                                </li>
+                                <li class="mb-3">
+                                    <button id="btnSubtraction"
+                                        class="btn btn-primary d-block btn-custom" onclick="sub()">Subtração</button>
+                                </li>
+                                <li class="mb-3">
+                                    <button id="btnMultiplication"
+                                        class="btn btn-primary d-block btn-custom">Multiplicação</button>
+                                </li>
+                                <li class="mb-3">
+                                    <button
+                                        class="btn btn-primary d-block btn-custom">Divisão</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <p class="l-title">Diversos</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-    
-    <footer>
-        <div class="container text-center">
-            <span>Feito com 💜</span>
-            <a href="https://github.com/leticiapmay99" target="_blank" title="GitHub/leticiapmay99">Leticia P. May</a>
+        <div class="row">
+            <div class="col">
+                <div class="card canvas-card">
+                    <p class="canvas-title">IMAGEM PROCESSADA</p>
+                    <div class="canvas-block">
+                        <!-- <canvas id="canvasOutput" width="263" height="285"></canvas> -->
+                        <canvas id="imageOutput" width="263" height="285"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
-    <!-- <script async src="./js/lib/opencv_3.4.14.js"></script> -->
-    <!-- <script async src="./js/lib/image.min.js"></script> -->
+    </div>
     <script async src="./js/lib/jimp_0.16.1.js"></script>
     <script defer src="./js/index.js"></script>
 </body>

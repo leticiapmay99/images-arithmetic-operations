@@ -172,18 +172,3 @@ a:focus {
   opacity: 0.8;
 }
 
-footer {
-  background: #fff;
-  border-top: 1px solid rgba(0,0,0,.125);
-  padding: 35px 0 50px;
-}
-
-@media (max-width: 480px) {
-  .flex-wrapp {
-    justify-content: center;
-  }
-
-  .custom-card {
-    margin-right: 0 !important;
-  }
-}
