@@ -52,8 +52,6 @@ function adicao(){
 	ctx.putImageData(pixelData, 0, 0)
 }
 
-
-
 function sub(){
     console.log('teste')
 	let ctx = imageOutput.getContext('2d');
@@ -67,6 +65,36 @@ function sub(){
 	}	
 	ctx.putImageData(pixelData, 0, 0)
 }
+
+
+function grayscale(){
+	let ctx = imageOutput.getContext('2d');
+    pixelData3 = pixelData
+	for(let i = 0; i<pixelData3.data.length; i+=4){
+        formula = 0.2989 * pixelData3.data[i] + 0.5870 * pixelData3.data[i+1] + 0.1140 *  pixelData3.data[i+2]
+        pixelData.data[i] = formula
+        pixelData.data[i+1] = formula
+        pixelData.data[i+2] = formula
+	}	
+	ctx.putImageData(pixelData, 0, 0)
+}
+
+function negativo(){
+
+    let ctx = imageOutput.getContext('2d');
+    pixelData3 = pixelData
+	for(let i = 0; i<pixelData3.data.length; i+=4){
+        pixelData3.data[i] = 255 - pixelData3.data[i]
+        pixelData3.data[i+1] = 255 - pixelData3.data[i+1]
+        pixelData3.data[i+2] = 255 - pixelData3.data[i+2]
+
+        pixelData.data[i] = pixelData3.data[i]
+        pixelData.data[i+1] = pixelData3.data[i+1]
+        pixelData.data[i+2] = pixelData3.data[i+2]
+	}	
+	ctx.putImageData(pixelData, 0, 0)
+}
+
 
 
 
