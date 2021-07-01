@@ -137,7 +137,7 @@ a:focus {
   flex-direction: column;
 }
 
-.flex-card-body .list-block:first-of-type {
+.flex-card-body .list-block {
   border-right: 1px solid rgba(0,0,0,.125);
   margin-right: 15px;
   padding-right: 15px;

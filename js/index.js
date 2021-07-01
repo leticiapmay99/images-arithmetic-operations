@@ -95,6 +95,45 @@ function negativo(){
 	ctx.putImageData(pixelData, 0, 0)
 }
 
+// não sei se ta certo tbm
+function binario(){
+    console.log('teste')
+	let ctx = imageOutput.getContext('2d');
+    pixelData3 = pixelData
+	let linear = 127
+
+	for(let i = 0; i<pixelData3.data.length; i+=4){
+		
+		if(pixelData3.data[i] && pixelData3.data[i+1] && pixelData3.data[i+2] <= linear) {
+			pixelData3.data[i] += 0
+			pixelData3.data[i+1] += 0
+			pixelData3.data[i+2] += 0	
+		} else {
+			pixelData3.data[i] +=255
+			pixelData3.data[i+1] += 255
+			pixelData3.data[i+2] += 255
+		}
+	}	
+	ctx.putImageData(pixelData, 0, 0)
+}
+
+
+// não sei se é assim
+// function and(){
+
+//     let ctx = imageOutput.getContext('2d');
+//     pixelData3 = pixelData
+// 	for(let i = 0; i<pixelData3.data.length; i+=4){
+
+// 		pixelData3.data[i]  || pixelData2.data[i]
+// 		pixelData3.data[i+1] ||   pixelData2.data[i]
+// 		pixelData3.data[i+2] || pixelData2.data[i]
+// 		pixelData3.data[i+3] ||  pixelData2.data[i]
+// 	}	
+// 	ctx.putImageData(pixelData, 0, 0)
+// }
+
+
 
 
 

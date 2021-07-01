@@ -66,6 +66,10 @@
                                     <button
                                         class="btn btn-primary d-block btn-custom">Divisão</button>
                                 </li>
+                                <li class="mb-3">
+                                    <button
+                                        class="btn btn-primary d-block btn-custom">Blending</button>
+                                </li>
                             </ul>
                         </div>
                         <div class="list-block">
@@ -73,10 +77,32 @@
 
                             <ul class="list-buttons">   
                                 <li class="mb-3">
-                                    <button class="btn btn-primary d-block btn-custom" onclick="grayscale()">Escala de Cinza</button>
+                                    <button class="btn btn-primary d-block btn-custom" onclick="grayscale()">RGB &rarr; Escala de Cinza</button>
+                                </li>
+                                <li class="mb-3">
+                                    <button class="btn btn-primary d-block btn-custom" onclick="binario()">RGB &rarr; Binária</button>
                                 </li>
                                 <li class="mb-3">
                                     <button class="btn btn-primary d-block btn-custom" onclick="negativo()">Negativo</button>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <p class="l-title">Operações Lógicas</p>
+
+                            <ul class="list-buttons">   
+                                <li class="mb-3">
+                                    <button class="btn btn-primary d-block btn-custom">AND</button>
+                                </li>
+                                <li class="mb-3">
+                                    <button class="btn btn-primary d-block btn-custom">OR</button>
+                                </li>
+                                <li class="mb-3">
+                                    <button class="btn btn-primary d-block btn-custom">XOR</button>
+                                </li>
+                                <li class="mb-3">
+                                    <button class="btn btn-primary d-block btn-custom">NOT</button>
                                 </li>
                             </ul>
                         </div>
@@ -89,7 +115,6 @@
                 <div class="card canvas-card">
                     <p class="canvas-title">IMAGEM PROCESSADA</p>
                     <div class="canvas-block">
-                        <!-- <canvas id="canvasOutput" width="263" height="285"></canvas> -->
                         <canvas id="imageOutput" width="263" height="285"></canvas>
                     </div>
                 </div>
