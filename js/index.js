@@ -139,12 +139,28 @@ function binario(){
 // 	for(let i = 0; i<pixelData3.data.length; i+=4){
 
 // 		pixelData3.data[i]  || pixelData2.data[i]
-// 		pixelData3.data[i+1] ||   pixelData2.data[i]
-// 		pixelData3.data[i+2] || pixelData2.data[i]
-// 		pixelData3.data[i+3] ||  pixelData2.data[i]
+// 		pixelData3.data[i+1]  ||   pixelData2.data[i]
+// 		pixelData3.data[i+2]  || pixelData2.data[i]
+// 		pixelData3.data[i+3]  || pixelData2.data[i]
 // 	}	
 // 	ctx.putImageData(pixelData, 0, 0)
 // }
+
+
+function blending(){
+
+	const value = document.getElementById('input-blending').value;
+    let ctx = imageOutput.getContext('2d');
+    pixelData3 = pixelData
+
+	for(let i = 0; i<pixelData3.data.length; i+=4){
+	
+		pixelData.data[i] = value * pixelData3.data[i] + (1-value) * pixelData2.data[i]
+        pixelData.data[i+1] =  value * pixelData3.data[i+1] + (1-value) * pixelData2.data[i+1]
+        pixelData.data[i+2] =  value * pixelData3.data[i+1] + (1-value) * pixelData2.data[i+1]
+	}	
+	ctx.putImageData(pixelData, 0, 0)
+}
 
 
 function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
