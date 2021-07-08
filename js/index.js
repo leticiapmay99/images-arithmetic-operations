@@ -108,6 +108,24 @@ function mult() {
 	ctx.putImageData(pixelData, 0, 0)
 }
 
+
+function div() {
+    console.log('divide')
+	let ctx = imageOutput.getContext('2d');
+	for(let i = 0; i<pixelData.data.length; i+=4){
+
+		pixelData.data[i] /= pixelData2.data[i] 
+		
+        pixelData.data[i+1] /= pixelData2.data[i+1]
+		
+        pixelData.data[i+2] /= pixelData2.data[i+2]
+		
+        pixelData.data[i+3] /= pixelData2.data[i+3]
+        // console.log(pixelData.data[i+1], pixelData.data[i], pixelData.data[i+2], pixelData.data[i+3])
+	}	
+	ctx.putImageData(pixelData, 0, 0)
+}
+
 function grayscale(){
 	let ctx = imageOutput.getContext('2d');
     pixelData3 = pixelData
