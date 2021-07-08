@@ -120,7 +120,7 @@ function div() {
 		
         pixelData.data[i+2] /= pixelData2.data[i+2]
 		
-        pixelData.data[i+3] /= pixelData2.data[i+3]
+       // pixelData.data[i+3] /= pixelData2.data[i+3]
         // console.log(pixelData.data[i+1], pixelData.data[i], pixelData.data[i+2], pixelData.data[i+3])
 	}	
 	ctx.putImageData(pixelData, 0, 0)
