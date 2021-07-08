@@ -58,27 +58,55 @@ function adicao(){
 	for(let i = 0; i<pixelData3.data.length; i+=4){
 
 		pixelData3.data[i] += pixelData2.data[i]
-		pixelData3.data[i+1] += pixelData2.data[i]
-		pixelData3.data[i+2] += pixelData2.data[i]
-		pixelData3.data[i+3] += pixelData2.data[i]
+		pixelData3.data[i+1] += pixelData2.data[i+1]
+		pixelData3.data[i+2] += pixelData2.data[i+2]
+		pixelData3.data[i+3] += pixelData2.data[i+3]
+	}	
+	ctx.putImageData(pixelData3, 0, 0)
+}
+
+function sub(){
+    console.log('sub')
+	let ctx = imageOutput.getContext('2d');
+	for(let i = 0; i<pixelData.data.length; i+=4){
+
+		pixelData.data[i] -= pixelData2.data[i]
+        if(pixelData.data[i] < 0) pixelData.data[i] = 0
+
+		pixelData.data[i+1] -= pixelData2.data[i+1]
+        if(pixelData.data[i+1] < 0) pixelData.data[i+1] = 0
+
+        pixelData.data[i+2] -= pixelData2.data[i+2]
+		if(pixelData.data[i+2] < 0) pixelData.data[i+2] = 0
+
+
+        // pixelData.data[i+3] -= pixelData2.data[i+3]
+        // if(pixelData.data[i+3] < 0) pixelData.data[i+3] = 0
 	}	
 	ctx.putImageData(pixelData, 0, 0)
 }
 
-function sub(){
-    console.log('teste')
+
+function mult() {
+    console.log('multiplica')
 	let ctx = imageOutput.getContext('2d');
     pixelData3 = pixelData
 	for(let i = 0; i<pixelData3.data.length; i+=4){
 
-		pixelData3.data[i] -= pixelData2.data[i]
-		pixelData3.data[i+1] -= pixelData2.data[i]
-		pixelData3.data[i+2] -= pixelData2.data[i]
-		pixelData3.data[i+3] -= pixelData2.data[i]
+		pixelData3.data[i] *= pixelData2.data[i]
+        if(pixelData3.data[i] > 255) pixelData3.data[i] = 255 
+		
+        pixelData3.data[i+1] *= pixelData2.data[i+1]
+        if(pixelData3.data[i+1] > 255) pixelData3.data[i+1] = 255
+		
+        pixelData3.data[i+2] *= pixelData2.data[i+2]
+        if(pixelData3.data[i+2] > 255) pixelData3.data[i+2] = 255
+		
+        pixelData3.data[i+3] *= pixelData2.data[i+3]
+        if(pixelData3.data[i+3] > 255) pixelData3.data[i+3] = 255
 	}	
 	ctx.putImageData(pixelData, 0, 0)
 }
-
 
 function grayscale(){
 	let ctx = imageOutput.getContext('2d');
@@ -129,6 +157,8 @@ function binario(){
 	}	
 	ctx.putImageData(pixelData, 0, 0)
 }
+
+
 
 
 // não sei se é assim
