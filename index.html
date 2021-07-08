@@ -11,7 +11,9 @@
 </head>
 <body>
 <div>
-    <div class="container shadow-sm py-3">
+    <div class="py-3">
+        <h1 class="title">Técnicas de Processamento de Imagens</h1>
+        <p class="sub-title">Trabalho para a disciplina de Processamento de imagens - 2021 </p>
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div class="flex-wrapp">
@@ -25,7 +27,7 @@
                         <div class="card-body">
                             <label class="btn btn-primary d-block" for="fileInputOne">Carregar Imagem</label>
                             <div class="input-group visually-hidden">
-                                <input id="fileInputOne" type="file" class="form-control disable" />
+                                <input  id="fileInputOne" type="file" class="form-control disable" />
                             </div>
                         </div>
                     </div>
@@ -68,7 +70,8 @@
                                 </li>
                                 <li class="mb-3">
                                     <button
-                                        class="btn btn-primary d-block btn-custom">Blending</button>
+                                        class="btn btn-primary d-block btn-custom" onclick="blending()">Blending</button>
+                                    <input  class="form-control input-function" id="input-blending" type="number">
                                 </li>
                             </ul>
                         </div>
@@ -93,7 +96,7 @@
 
                             <ul class="list-buttons">   
                                 <li class="mb-3">
-                                    <button class="btn btn-primary d-block btn-custom">AND</button>
+                                    <button class="btn btn-primary d-block btn-custom" onclick="and()">AND</button>
                                 </li>
                                 <li class="mb-3">
                                     <button class="btn btn-primary d-block btn-custom">OR</button>
