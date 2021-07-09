@@ -204,6 +204,19 @@ function or(){
 	ctx.putImageData(pixelData, 0, 0)
 }
 
+function xor(){
+
+    let ctx = imageOutput.getContext('2d');
+	for(let i = 0; i<pixelData.data.length; i+=4){
+
+	    pixelData.data[i] =	pixelData.data[i] ^ pixelData2.data[i]
+        pixelData.data[i+1] =	pixelData.data[i+1]  ^ pixelData2.data[i]
+        pixelData.data[i+2] = pixelData.data[i+2]  ^ pixelData2.data[i]
+	}	
+	ctx.putImageData(pixelData, 0, 0)
+}
+
+
 function blending(){
 
 	const value = document.getElementById('input-blending').value;
