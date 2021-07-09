@@ -154,9 +154,7 @@ function negativo(){
 	ctx.putImageData(pixelData, 0, 0)
 }
 
-// não sei se ta certo tbm
 function binario(){
-    console.log('teste')
 	let ctx = imageOutput.getContext('2d');
     pixelData3 = pixelData
 	let linear = 127
@@ -189,11 +187,22 @@ function and(){
 	    pixelData.data[i] =	pixelData3.data[i]  && pixelData2.data[i]
         pixelData.data[i+1] =	pixelData3.data[i+1]  &&   pixelData2.data[i]
         pixelData.data[i+2] = pixelData3.data[i+2]  && pixelData2.data[i]
-        // pixelData.data[i+3] = pixelData3.data[i+3]  && pixelData2.data[i]
 	}	
 	ctx.putImageData(pixelData, 0, 0)
 }
 
+function or(){
+
+    let ctx = imageOutput.getContext('2d');
+    pixelData3 = pixelData
+	for(let i = 0; i<pixelData3.data.length; i+=4){
+
+	    pixelData.data[i] =	pixelData3.data[i]  || pixelData2.data[i]
+        pixelData.data[i+1] =	pixelData3.data[i+1] ||   pixelData2.data[i]
+        pixelData.data[i+2] = pixelData3.data[i+2]  ||pixelData2.data[i]
+	}	
+	ctx.putImageData(pixelData, 0, 0)
+}
 
 function blending(){
 
