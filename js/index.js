@@ -1,74 +1,76 @@
 
-const imgInputOne = document.getElementById('imgInputOne');
-const fileInputOne = document.getElementById('fileInputOne');
+const imgInputOne = document.getElementById('imgInputOne')
+const fileInputOne = document.getElementById('fileInputOne')
 
-const imgInputTwo = document.getElementById('imgInputTwo');
-const fileInputTwo = document.getElementById('fileInputTwo');
-const imageOutput = document.getElementById('imageOutput');
+const imgInputTwo = document.getElementById('imgInputTwo')
+const fileInputTwo = document.getElementById('fileInputTwo')
+const imageOutput = document.getElementById('imageOutput')
 
 var pixelData
 var pixelData2
 
 
-fileInputOne.addEventListener('change', handleFiles);
-fileInputTwo.addEventListener('change', handleFiles2);
+fileInputOne.addEventListener('change', handleFiles)
+fileInputTwo.addEventListener('change', handleFiles2)
+
+function reload() {
+
+    window.location.reload();
+}
 
 function handleFiles(e) {
-	console.log('imgInputOne', imgInputOne)
-	console.log('e', e.target.files[0])
-    let ctx = imgInputOne.getContext('2d');
-    var img = new Image;
-    img.src = URL.createObjectURL(e.target.files[0]);
+	
+    let ctx = imgInputOne.getContext('2d')
+    var img = new Image
+    img.src = URL.createObjectURL(e.target.files[0])
+
     img.onload = function() {
-		// imgInputOne.width = 50;
-    	// imgInputOne.height = 85;
-		imgInputOne.setAttribute('width', 250);
-		imgInputOne.setAttribute('height', 285);
-		console.log('window.innerWidth', window.innerWidth)
-		console.log('window.innerHeight', window.innerHeight)
-		drawImageProp(ctx, this, 0, 0, imgInputOne.width, imgInputOne.height);
-		// ctx.drawImage(img, 0,0);
+		imgInputOne.setAttribute('width', 250)
+		imgInputOne.setAttribute('height', 285)
+		drawImageProp(ctx, this, 0, 0, imgInputOne.width, imgInputOne.height)
 		pixelData = ctx.getImageData(0,0, imgInputOne.width, imgInputOne.height)
-		console.log(pixelData)
     }
-	ctx.clearRect(0, 0, 265, 285);
+
+	ctx.clearRect(0, 0, 265, 285)
 }
 
 function handleFiles2(e) {
-	console.log(imgInputTwo)
-    let ctx = imgInputTwo.getContext('2d');
-    var img = new Image;
-    img.src = URL.createObjectURL(e.target.files[0]);
+
+    let ctx = imgInputTwo.getContext('2d')
+    var img = new Image
+    img.src = URL.createObjectURL(e.target.files[0])
     img.onload = function() {
-		imgInputTwo.setAttribute('width', 250);
-		imgInputTwo.setAttribute('height', 285);
-		console.log('window.innerWidth', window.innerWidth)
-		console.log('window.innerHeight', window.innerHeight)
-		drawImageProp(ctx, this, 0, 0, imgInputTwo.width, imgInputTwo.height);
-		// ctx.drawImage(img, 20,20);
+		imgInputTwo.setAttribute('width', 250)
+		imgInputTwo.setAttribute('height', 285)
+		drawImageProp(ctx, this, 0, 0, imgInputTwo.width, imgInputTwo.height)
 		pixelData2 = ctx.getImageData(0,0, imgInputTwo.width, imgInputTwo.height)
-		// console.log(pixelData2)
     }
-	ctx.clearRect(0, 0, 265, 285);
+
+	ctx.clearRect(0, 0, 265, 285)
 }
 
-function adicao(){
-	let ctx = imageOutput.getContext('2d');
+function sum() {
+
+	let ctx = imageOutput.getContext('2d')
     pixelData3 = pixelData
-	for(let i = 0; i<pixelData3.data.length; i+=4){
+
+	for(let i = 0; i<pixelData3.data.length; i+=4) {
 
 		pixelData3.data[i] += pixelData2.data[i]
 		pixelData3.data[i+1] += pixelData2.data[i+1]
 		pixelData3.data[i+2] += pixelData2.data[i+2]
 		pixelData3.data[i+3] += pixelData2.data[i+3]
+
 	}	
+
 	ctx.putImageData(pixelData3, 0, 0)
 }
 
-function sub(){
-    console.log('sub')
-	let ctx = imageOutput.getContext('2d');
-	for(let i = 0; i<pixelData.data.length; i+=4){
+function subtraction() {
+
+    let ctx = imageOutput.getContext('2d')
+
+	for(let i = 0; i<pixelData.data.length; i+=4) {
 
 		pixelData.data[i] -= pixelData2.data[i]
         if(pixelData.data[i] < 0) pixelData.data[i] = 0
@@ -79,19 +81,19 @@ function sub(){
         pixelData.data[i+2] -= pixelData2.data[i+2]
 		if(pixelData.data[i+2] < 0) pixelData.data[i+2] = 0
 
-
-        // pixelData.data[i+3] -= pixelData2.data[i+3]
-        // if(pixelData.data[i+3] < 0) pixelData.data[i+3] = 0
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
 
-function mult() {
-    console.log('multiplica')
-	let ctx = imageOutput.getContext('2d');
+function multiplication() {
+
+	let ctx = imageOutput.getContext('2d')
+
     pixelData3 = pixelData
-	for(let i = 0; i<pixelData3.data.length; i+=4){
+
+	for(let i = 0; i<pixelData3.data.length; i+=4) {
 
 		pixelData3.data[i] *= pixelData2.data[i]
         if(pixelData3.data[i] > 255) pixelData3.data[i] = 255 
@@ -105,44 +107,50 @@ function mult() {
         pixelData3.data[i+3] *= pixelData2.data[i+3]
         if(pixelData3.data[i+3] > 255) pixelData3.data[i+3] = 255
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
 
-function div() {
-    console.log('divide')
-	let ctx = imageOutput.getContext('2d');
-	for(let i = 0; i<pixelData.data.length; i+=4){
+function division() {
+
+	let ctx = imageOutput.getContext('2d')
+
+	for(let i = 0; i<pixelData.data.length; i+=4) {
 
 		pixelData.data[i] /= pixelData2.data[i] 
-		
         pixelData.data[i+1] /= pixelData2.data[i+1]
-		
         pixelData.data[i+2] /= pixelData2.data[i+2]
-		
-       // pixelData.data[i+3] /= pixelData2.data[i+3]
-        // console.log(pixelData.data[i+1], pixelData.data[i], pixelData.data[i+2], pixelData.data[i+3])
+
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
-function grayscale(){
-	let ctx = imageOutput.getContext('2d');
+function grayScale() {
+
+	let ctx = imageOutput.getContext('2d')
+
     pixelData3 = pixelData
-	for(let i = 0; i<pixelData3.data.length; i+=4){
+
+	for(let i = 0; i<pixelData3.data.length; i+=4) {
+
         formula = 0.2989 * pixelData3.data[i] + 0.5870 * pixelData3.data[i+1] + 0.1140 *  pixelData3.data[i+2]
         pixelData.data[i] = formula
         pixelData.data[i+1] = formula
         pixelData.data[i+2] = formula
+
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
-function negativo(){
+function negative() {
 
-    let ctx = imageOutput.getContext('2d');
+    let ctx = imageOutput.getContext('2d')
     pixelData3 = pixelData
-	for(let i = 0; i<pixelData3.data.length; i+=4){
+
+	for(let i = 0; i<pixelData3.data.length; i+=4) {
         pixelData3.data[i] = 255 - pixelData3.data[i]
         pixelData3.data[i+1] = 255 - pixelData3.data[i+1]
         pixelData3.data[i+2] = 255 - pixelData3.data[i+2]
@@ -151,15 +159,19 @@ function negativo(){
         pixelData.data[i+1] = pixelData3.data[i+1]
         pixelData.data[i+2] = pixelData3.data[i+2]
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
-function binario(){
-	let ctx = imageOutput.getContext('2d');
+function binary() {
+
+	let ctx = imageOutput.getContext('2d')
+
     pixelData3 = pixelData
+
 	let linear = 127
 
-	for(let i = 0; i<pixelData3.data.length; i+=4){
+	for(let i = 0; i<pixelData3.data.length; i+=4) {
 		
 		if(pixelData3.data[i] && pixelData3.data[i+1] && pixelData3.data[i+2] <= linear) {
 			pixelData3.data[i] += 0
@@ -171,68 +183,78 @@ function binario(){
 			pixelData3.data[i+2] += 255
 		}
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
 
+function and() {
 
-
-// não sei se é assim
-function and(){
-
-    let ctx = imageOutput.getContext('2d');
+    let ctx = imageOutput.getContext('2d')
     pixelData3 = pixelData
-	for(let i = 0; i<pixelData3.data.length; i+=4){
+
+	for(let i = 0; i<pixelData3.data.length; i+=4) {
 
 	    pixelData.data[i] =	pixelData3.data[i]  && pixelData2.data[i]
         pixelData.data[i+1] =	pixelData3.data[i+1]  &&   pixelData2.data[i]
         pixelData.data[i+2] = pixelData3.data[i+2]  && pixelData2.data[i]
+
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
-function or(){
+function or() {
 
-    let ctx = imageOutput.getContext('2d');
+    let ctx = imageOutput.getContext('2d')
     pixelData3 = pixelData
-	for(let i = 0; i<pixelData3.data.length; i+=4){
+
+	for(let i = 0; i<pixelData3.data.length; i+=4) {
 
 	    pixelData.data[i] =	pixelData3.data[i]  || pixelData2.data[i]
         pixelData.data[i+1] =	pixelData3.data[i+1] ||   pixelData2.data[i]
         pixelData.data[i+2] = pixelData3.data[i+2]  ||pixelData2.data[i]
+
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
-function xor(){
+function xor() {
 
-    let ctx = imageOutput.getContext('2d');
-	for(let i = 0; i<pixelData.data.length; i+=4){
+    let ctx = imageOutput.getContext('2d')
+	for(let i = 0; i<pixelData.data.length; i+=4) {
 
 	    pixelData.data[i] =	pixelData.data[i] ^ pixelData2.data[i]
-        pixelData.data[i+1] =	pixelData.data[i+1]  ^ pixelData2.data[i]
-        pixelData.data[i+2] = pixelData.data[i+2]  ^ pixelData2.data[i]
+        pixelData.data[i+1] =	pixelData.data[i+1] ^ pixelData2.data[i]
+        pixelData.data[i+2] = pixelData.data[i+2] ^ pixelData2.data[i]
+
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
 
-function not(){
-    let ctx = imageOutput.getContext('2d');
-    console.log('imagem', pixelData)
-    for(let i = 0; i<pixelData.data.length; i+=4){
+function not() {
+
+    let ctx = imageOutput.getContext('2d')
+
+    for(let i = 0; i<pixelData.data.length; i+=4) {
+
         pixelData.data[i] = pixelData.data[i] > 0 ? 0 : 255
         pixelData.data[i+1] = pixelData.data[i+1] > 0 ? 0 : 255
         pixelData.data[i+2] = pixelData.data[i+2] > 0 ? 0 : 255
+
     }	
+
     ctx.putImageData(pixelData, 0, 0)
 }
 
 
 function blending(){
-    console.log('teste')
+
 	const value = document.getElementById('input-blending').value;
-    let ctx = imageOutput.getContext('2d');
+    let ctx = imageOutput.getContext('2d')
     pixelData3 = pixelData
 
 	for(let i = 0; i<pixelData3.data.length; i+=4){
@@ -240,17 +262,20 @@ function blending(){
 		pixelData.data[i] = value * pixelData3.data[i] + (1-value) * pixelData2.data[i]
         pixelData.data[i+1] =  value * pixelData3.data[i+1] + (1-value) * pixelData2.data[i+1]
         pixelData.data[i+2] =  value * pixelData3.data[i+1] + (1-value) * pixelData2.data[i+1]
+
 	}	
+
 	ctx.putImageData(pixelData, 0, 0)
 }
 
 
 function download() {
-    var download = document.getElementById("download");
-    var image = document.getElementById("imageOutput").toDataURL("image/png")
-        .replace("image/png", "image/octet-stream");
+
+    var download = document.getElementById("download")
+    var image = document.getElementById("imageOutput").toDataURL("image/png").replace("image/png", "image/octet-stream");
     download.setAttribute("href", image);
-    }
+
+}
 
 
 function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {

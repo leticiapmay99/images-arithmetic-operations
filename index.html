@@ -54,19 +54,19 @@
                             <p class="l-title">Operações Aritméticas</p>
                             <ul class="list-buttons">   
                                 <li class="mb-3">
-                                    <button id="btnSum" class="btn btn-primary d-block btn-custom" onclick="adicao()">Adição</button>
+                                    <button id="btnSum" class="btn btn-primary d-block btn-custom" onclick="sum()">Adição</button>
                                 </li>
                                 <li class="mb-3">
                                     <button id="btnSubtraction"
-                                        class="btn btn-primary d-block btn-custom" onclick="sub()">Subtração</button>
+                                        class="btn btn-primary d-block btn-custom" onclick="subtraction()">Subtração</button>
                                 </li>
                                 <li class="mb-3">
                                     <button id="btnMultiplication"
-                                        class="btn btn-primary d-block btn-custom" onclick="mult()">Multiplicação</button>
+                                        class="btn btn-primary d-block btn-custom" onclick="multiplication()">Multiplicação</button>
                                 </li>
                                 <li class="mb-3">
                                     <button
-                                        class="btn btn-primary d-block btn-custom" onclick="div()">Divisão</button>
+                                        class="btn btn-primary d-block btn-custom" onclick="division()">Divisão</button>
                                 </li>
                                 <li class="mb-3">
                                     <button
@@ -80,13 +80,13 @@
 
                             <ul class="list-buttons">   
                                 <li class="mb-3">
-                                    <button class="btn btn-primary d-block btn-custom" onclick="grayscale()">RGB &rarr; Escala de Cinza</button>
+                                    <button class="btn btn-primary d-block btn-custom" onclick="grayScale()">RGB &rarr; Escala de Cinza</button>
                                 </li>
                                 <li class="mb-3">
-                                    <button class="btn btn-primary d-block btn-custom" onclick="binario()">RGB &rarr; Binária</button>
+                                    <button class="btn btn-primary d-block btn-custom" onclick="binary()">RGB &rarr; Binária</button>
                                 </li>
                                 <li class="mb-3">
-                                    <button class="btn btn-primary d-block btn-custom" onclick="negativo()">Negativo</button>
+                                    <button class="btn btn-primary d-block btn-custom" onclick="negative()">Negativo</button>
                                 </li>
                                 
                             </ul>
@@ -119,6 +119,7 @@
                     <a id="download" download="resultado.png">
                         <button id="download" class="btn btn-primary d-block btn-custom " onClick="download()">Download</button>
                     </a>
+                    <button style="margin-left: 16px;" class="btn btn-primary d-block btn-custom " onClick="reload()">Recarregar</button>
                 </div>
                 <div class="card canvas-card">
                     <p class="canvas-title">IMAGEM PROCESSADA</p>
