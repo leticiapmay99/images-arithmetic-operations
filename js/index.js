@@ -230,7 +230,7 @@ function not(){
 
 
 function blending(){
-
+    console.log('teste')
 	const value = document.getElementById('input-blending').value;
     let ctx = imageOutput.getContext('2d');
     pixelData3 = pixelData
@@ -243,6 +243,14 @@ function blending(){
 	}	
 	ctx.putImageData(pixelData, 0, 0)
 }
+
+
+function download() {
+    var download = document.getElementById("download");
+    var image = document.getElementById("imageOutput").toDataURL("image/png")
+        .replace("image/png", "image/octet-stream");
+    download.setAttribute("href", image);
+    }
 
 
 function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
